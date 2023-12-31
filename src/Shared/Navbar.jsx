@@ -1,12 +1,11 @@
 import { CiMenuFries } from "react-icons/ci";
 import { NavLink } from "react-router-dom";
 import useAuthHook from "../Hooks/useAuthHook";
-import { BsBox, BsPersonDashFill, BsPersonHeart } from "react-icons/bs";
+import { BsPersonDashFill, BsPersonHeart } from "react-icons/bs";
 import {
 	SiCloudflarepages,
 	SiGnuprivacyguard,
 	SiHomeassistant,
-	SiMediafire,
 	SiMediamarkt,
 	SiMyspace,
 } from "react-icons/si";
@@ -33,7 +32,7 @@ const Navbar = () => {
 					>
 						<li>
 							<NavLink to="/" className={isActive}>
-								<SiHomeassistant className="text-blue-600 text-lg " />
+								<SiHomeassistant />
 								Home
 							</NavLink>
 						</li>
@@ -44,13 +43,13 @@ const Navbar = () => {
 							</NavLink>
 						</li>
 						<li>
-							<NavLink to="/collages " className={isActive}>
+							<NavLink to="/admission" className={isActive}>
 								<SiMediamarkt />
 								Admission
 							</NavLink>
 						</li>
 						<li>
-							<NavLink to="/collage " className={isActive}>
+							<NavLink to="/myCollages " className={isActive}>
 								<SiMyspace />
 								My Collage
 							</NavLink>
@@ -58,10 +57,7 @@ const Navbar = () => {
 						<li>
 							{!user && (
 								<NavLink to="/register" className={isActive}>
-									<SiGnuprivacyguard
-										className="text-blue-600 text-lg
-								"
-									/>
+									<SiGnuprivacyguard />
 									Register
 								</NavLink>
 							)}
@@ -91,24 +87,24 @@ const Navbar = () => {
 				<ul className="btn btn-ghost bg-black shadow-none gap-8 font-light join-horizontal  text-white px-1">
 					<li>
 						<NavLink to="/" className={isActive}>
-							<SiHomeassistant className="text-lg text-blue-600" />
+							<SiHomeassistant />
 							Home
 						</NavLink>
 					</li>
 					<li>
-						<NavLink to="/collages " className={isActive}>
+						<NavLink to="/collages" className={isActive}>
 							<SiCloudflarepages />
 							Collages
 						</NavLink>
 					</li>
 					<li>
-						<NavLink to="/collages " className={isActive}>
+						<NavLink to="/admission" className={isActive}>
 							<SiMediamarkt />
 							Admission
 						</NavLink>
 					</li>
 					<li>
-						<NavLink to="/collage " className={isActive}>
+						<NavLink to="/myCollages" className={isActive}>
 							<SiMyspace />
 							My Collage
 						</NavLink>
@@ -116,10 +112,7 @@ const Navbar = () => {
 					<li>
 						{!user && (
 							<NavLink to="/register" className={isActive}>
-								<SiGnuprivacyguard
-									className="text-blue-600 text-lg
-								"
-								/>
+								<SiGnuprivacyguard />
 								Register
 							</NavLink>
 						)}

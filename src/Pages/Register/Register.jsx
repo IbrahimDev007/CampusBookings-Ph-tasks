@@ -28,7 +28,7 @@ const Register = () => {
 				university: null,
 				adress: null,
 			};
-			fetch("https://social-umber-seven.vercel.app/users", {
+			fetch("https://localhost:3000/users", {
 				method: "POST",
 				headers: {
 					"content-type": "application/json",
@@ -58,12 +58,12 @@ const Register = () => {
 			updateUserProfile(data.name, data.photoURL, data.email)
 				.then(() => {
 					axios
-						.post("https://social-umber-seven.vercel.app/users", {
+						.post("https://localhost:3000/users", {
 							name: data.name,
 							email: data.email,
 							image: data?.photoURL,
-							university: null,
-							adress: null,
+							// university: null,
+							// adress: null,
 						})
 						.then((data) => {
 							console.log(data);

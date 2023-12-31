@@ -3,6 +3,9 @@ import Main from "../Layouts/Main";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
+import Collages from "../Pages/Collages/Collages";
+import Admission from "../Pages/Admission/Admission";
+import MyCollages from "../Pages/MyCollege/MyCollages";
 //router added
 const router = createBrowserRouter([
 	{
@@ -14,6 +17,18 @@ const router = createBrowserRouter([
 			{
 				path: "/",
 				element: <Home />,
+			},
+			{
+				path: "/collages",
+				element: <Collages />,
+			},
+			{
+				path: "/admission",
+				element: <Admission />,
+			},
+			{
+				path: "/myCollages",
+				element: <MyCollages />,
 			},
 
 			{

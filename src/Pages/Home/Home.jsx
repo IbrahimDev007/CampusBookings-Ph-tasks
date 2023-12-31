@@ -1,5 +1,13 @@
+import Hero from "./Components/Hero";
+import Popular from "./Components/PopularCollage/Popular";
+
 const Home = () => {
-	return <>this is home</>;
+	return (
+		<>
+			<Hero />
+			<Popular />
+		</>
+	);
 };
 
 export default Home;
