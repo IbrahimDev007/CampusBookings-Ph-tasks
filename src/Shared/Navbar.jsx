@@ -78,7 +78,7 @@ const Navbar = () => {
 					</ul>
 				</div>
 				<NavLink to="/" className="btn btn-ghost hover:text-cyan-500 text-xl">
-					<img src="/Social.png" className="object-cover  w-10 h-10" />
+					{/* <img src="/Social.png" className="object-cover  w-10 h-10" /> */}
 					<FaCampground />
 					Campus Bookings
 				</NavLink>
@@ -117,28 +117,6 @@ const Navbar = () => {
 							</NavLink>
 						)}
 					</li>
-					{/* {user && (
-						<>
-							<li>
-								<NavLink to="about" className={isActive}>
-									<FaBookOpen
-										className="text-blue-600 text-lg
-								"
-									/>
-									About
-								</NavLink>
-							</li>
-							<li>
-								<NavLink to="post" className={isActive}>
-									<BsBox
-										className="text-blue-600 text-lg
-								"
-									/>
-									My Post
-								</NavLink>
-							</li>
-						</>
-					)} */}
 				</ul>
 			</div>
 			<div className="navbar-end">

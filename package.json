@@ -16,6 +16,8 @@
     "react-hook-form": "^7.49.2",
     "react-lottie": "^1.2.3",
     "react-photo-gallery": "^8.0.0",
+    "react-rating": "^2.0.5",
+    "react-simple-star-rating": "^5.1.7",
     "sweetalert2": "^11.10.2"
   },
   "devDependencies": {

@@ -1,5 +1,11 @@
+import Popular from "../Home/Components/PopularCollage/Popular";
+
 const Collages = () => {
-	return <>collages</>;
+	return (
+		<>
+			<Popular />
+		</>
+	);
 };
 
 export default Collages;

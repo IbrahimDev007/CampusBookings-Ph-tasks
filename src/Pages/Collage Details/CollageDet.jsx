@@ -4,11 +4,10 @@ import useAuthHook from "../../Hooks/useAuthHook";
 
 const CollageDet = () => {
 	const { user } = useAuthHook();
-
 	return (
 		<div className="card  flex flex-col justify-center items-center">
-			<div className="grid grid-cols-4">
-				<div className="col-span-3 flex flex-col">
+			<div className="grid grid-cols-6">
+				<div className="col-span-5 flex flex-col">
 					<>
 						<GalleryCard photos={[]} />
 
@@ -37,8 +36,9 @@ const CollageDet = () => {
 						}
 					</>
 				</div>
-				<div>
+				<div className="col-span-1">
 					<GalleryCard photos={[]} />
+					photo
 				</div>
 			</div>
 		</div>

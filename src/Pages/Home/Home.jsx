@@ -1,3 +1,4 @@
+import CollageDet from "../Collage Details/CollageDet";
 import Hero from "./Components/Hero";
 import Popular from "./Components/PopularCollage/Popular";
 import PopularGraduted from "./Components/PopularGraduted/PopularGraduted";
@@ -12,6 +13,7 @@ const Home = () => {
 			<PopularGraduted />
 			<ResarchLink />
 			<Review />
+			<CollageDet />
 		</>
 	);
 };
