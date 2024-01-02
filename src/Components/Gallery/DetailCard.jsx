@@ -1,6 +1,6 @@
 import { FaEvernote } from "react-icons/fa";
 
-const DetailCard = () => {
+const DetailCard = ({ title, desc, link }) => {
 	return (
 		<>
 			<div className="card w-96 bg-base-100 shadow-xl">
@@ -12,9 +12,11 @@ const DetailCard = () => {
 				</figure>
 				<div className="card-body">
 					<h2 className="card-title">
-						<FaEvernote /> Event Title
+						<FaEvernote />
+						Title: {title}
 					</h2>
-					<p className="">Details</p>
+					<p className="">Details:{desc}</p>
+					{link && <p>link:link</p>}
 				</div>
 			</div>
 		</>
