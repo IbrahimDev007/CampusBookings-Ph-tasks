@@ -7,6 +7,7 @@ import {
 	SiGnuprivacyguard,
 	SiHomeassistant,
 	SiMediamarkt,
+	SiMedium,
 	SiMyspace,
 } from "react-icons/si";
 import { FaBookOpen, FaCampground } from "react-icons/fa";
@@ -54,6 +55,7 @@ const Navbar = () => {
 								My Collage
 							</NavLink>
 						</li>
+
 						<li>
 							{!user && (
 								<NavLink to="/register" className={isActive}>
@@ -107,6 +109,12 @@ const Navbar = () => {
 						<NavLink to="/myCollages" className={isActive}>
 							<SiMyspace />
 							My Collage
+						</NavLink>
+					</li>
+					<li>
+						<NavLink to="/university" className={isActive}>
+							<SiMedium />
+							University
 						</NavLink>
 					</li>
 					<li>

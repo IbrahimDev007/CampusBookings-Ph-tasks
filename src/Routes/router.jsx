@@ -6,6 +6,7 @@ import Register from "../Pages/Register/Register";
 import Collages from "../Pages/Collages/Collages";
 import Admission from "../Pages/Admission/Admission";
 import MyCollages from "../Pages/MyCollege/MyCollages";
+import UniversityForm from "../Pages/Universityform/UniversityForm";
 //router added
 const router = createBrowserRouter([
 	{
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
 			{
 				path: "/myCollages",
 				element: <MyCollages />,
+			},
+			{
+				path: "/university",
+				element: <UniversityForm />,
 			},
 
 			{
