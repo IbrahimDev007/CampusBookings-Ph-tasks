@@ -6,15 +6,30 @@ import useUserHook from "../../Hooks/useUserHooks";
 const CollageDet = () => {
 	const [user] = useUserHook();
 	const data = useLoaderData();
-	console.log(data);
-	const { admission_process, events, Resarch, sports, reviews } = data;
-	console.log(admission_process);
+	const { admission_process, events, Resarch, sports, reviews, Photos } = data;
+
 	return (
-		<div className="card  flex flex-col justify-center items-center">
-			<div className="grid grid-cols-6">
-				<div className="col-span-5 flex flex-col">
+		<div className="card w-full flex flex-col justify-center items-center">
+			<div className="grid ">
+				<div className="flex flex-col items-center justify-center">
 					<>
-						<GalleryCard photos={data?.Photos} />
+						<div className="grid grid-cols-2 md:grid-cols-2 xl:grid-col-3">
+							{Photos.map((img, idx) => {
+								const widths = [10, 20, 30, 40]; // Predefined widths
+								const width = widths[idx % widths.length]; // Select a width based on the index
+
+								return (
+									<img
+										className={`object-cover p-5 w-[${width * 16}px] h-[${
+											width * 16
+										}px]`}
+										src={img?.src}
+										alt={`img${idx + 1}`}
+										key={idx}
+									/>
+								);
+							})}
+						</div>
 
 						<h2 className="text-2xl font-semibold">Admission Process</h2>
 						<p>{admission_process}</p>
@@ -67,10 +82,6 @@ const CollageDet = () => {
 							))}
 						</div>
 					</>
-				</div>
-				<div className="col-span-1">
-					<GalleryCard photos={[]} />
-					photo
 				</div>
 			</div>
 		</div>

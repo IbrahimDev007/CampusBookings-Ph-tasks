@@ -1,10 +1,6 @@
 import Gallery from "react-photo-gallery";
 const GalleryCard = ({ photos }) => {
-	return (
-		<>
-			<Gallery photos={photos} />
-		</>
-	);
+	return <>{photos && <Gallery photos={photos} />}</>;
 };
 
 export default GalleryCard;

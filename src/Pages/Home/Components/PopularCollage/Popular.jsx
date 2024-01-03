@@ -50,10 +50,9 @@ const Popular = ({ clgData }) => {
 							))}
 						</p>
 						<div className="card-actions justify-end">
-							<Link to={`collage/${_id}`}>
+							<Link to={`/collage/${_id}`}>
 								<button className="btn btn-primary">
 									<SiK3S />
-									DetailS
 								</button>
 							</Link>
 						</div>

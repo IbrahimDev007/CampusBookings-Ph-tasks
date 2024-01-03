@@ -14,7 +14,7 @@ const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <Main />,
-		errorElement: <h1>This error</h1>,
+		errorElement: <h1>This is ---- error</h1>,
 
 		children: [
 			{
@@ -29,15 +29,11 @@ const router = createBrowserRouter([
 				path: "/collage/:id",
 				element: <CollageDet />,
 				loader: async ({ params }) => {
-					try {
-						const res = await axios.get(
-							`http://localhost:3000/collage/${params.id}`
-						);
-						return res.data.data;
-					} catch (error) {
-						console.error("Error fetching collage data:", error);
-						throw error; // Rethrow the error to let React Router handle it
-					}
+					const res = await axios.get(
+						`http://localhost:3000/collage/${params.id}`
+					);
+					console.log(res.data, "ressssssssssssssssssssss");
+					return res.data;
 				},
 			},
 			{
