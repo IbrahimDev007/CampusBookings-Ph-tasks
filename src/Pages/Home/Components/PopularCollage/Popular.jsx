@@ -1,9 +1,9 @@
-import { FaBuilding, FaEvernote } from "react-icons/fa";
+import { FaBuilding, FaEvernote, FaStar } from "react-icons/fa";
 import { Si4Chan, SiGooglecalendar, SiK3S, SiSearxng } from "react-icons/si";
 import { Link } from "react-router-dom";
 
 const Popular = ({ clgData }) => {
-	const { _id, name, admission, events, Resarch, sports } = clgData;
+	const { _id, name, admission, events, Resarch, sports, ratting } = clgData;
 
 	return (
 		<div className="my-6">
@@ -49,6 +49,24 @@ const Popular = ({ clgData }) => {
 								<span key={Rs?._id}>{Rs?.title}</span>
 							))}
 						</p>
+						<p>
+							<div className="flex">
+								{[...Array(5)].map((_, index) => {
+									return (
+										<button key={index}>
+											<FaStar
+												size={20}
+												style={{
+													color: "#ffe101",
+												}}
+												value={ratting}
+											/>
+										</button>
+									);
+								})}
+							</div>
+						</p>
+
 						<div className="card-actions justify-end">
 							<Link to={`/collage/${_id}`}>
 								<button className="btn btn-primary">

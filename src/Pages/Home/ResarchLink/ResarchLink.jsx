@@ -1,6 +1,6 @@
 const ResarchLink = ({ clgData }) => {
 	const { Resarch } = clgData;
-	console.log(Resarch);
+	
 	return (
 		<div className=" grid grid-rows-2 ">
 			{Resarch &&
