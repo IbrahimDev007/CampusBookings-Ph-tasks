@@ -7,6 +7,8 @@ import Collages from "../Pages/Collages/Collages";
 import Admission from "../Pages/Admission/Admission";
 import MyCollages from "../Pages/MyCollege/MyCollages";
 import UniversityForm from "../Pages/Universityform/UniversityForm";
+import CollageDet from "../Pages/Collage Details/CollageDet";
+import axios from "axios";
 //router added
 const router = createBrowserRouter([
 	{
@@ -22,6 +24,21 @@ const router = createBrowserRouter([
 			{
 				path: "/collages",
 				element: <Collages />,
+			},
+			{
+				path: "/collage/:id",
+				element: <CollageDet />,
+				loader: async ({ params }) => {
+					try {
+						const res = await axios.get(
+							`http://localhost:3000/collage/${params.id}`
+						);
+						return res.data.data;
+					} catch (error) {
+						console.error("Error fetching collage data:", error);
+						throw error; // Rethrow the error to let React Router handle it
+					}
+				},
 			},
 			{
 				path: "/admission",

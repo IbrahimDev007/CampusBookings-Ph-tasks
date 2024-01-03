@@ -1,20 +1,20 @@
+import { useLoaderData } from "react-router-dom";
 import DetailCard from "../../Components/Gallery/DetailCard";
 import GalleryCard from "../../Components/Gallery/GalleryCard";
-import useAuthHook from "../../Hooks/useAuthHook";
-import useCollageHook from "../../Hooks/useCollageHook";
+import useUserHook from "../../Hooks/useUserHooks";
 
 const CollageDet = () => {
-	// const { user } = useAuthHook();
-	const [collageData] = useCollageHook();
-	const { admission_process, events, Resarch, sports, reviews } = collageData;
-
-	console.log(events, "events", collageData);
+	const [user] = useUserHook();
+	const data = useLoaderData();
+	console.log(data);
+	const { admission_process, events, Resarch, sports, reviews } = data;
+	console.log(admission_process);
 	return (
 		<div className="card  flex flex-col justify-center items-center">
-			{/* <div className="grid grid-cols-6">
+			<div className="grid grid-cols-6">
 				<div className="col-span-5 flex flex-col">
 					<>
-						<GalleryCard photos={collageData?.Photos} />
+						<GalleryCard photos={data?.Photos} />
 
 						<h2 className="text-2xl font-semibold">Admission Process</h2>
 						<p>{admission_process}</p>
@@ -72,7 +72,7 @@ const CollageDet = () => {
 					<GalleryCard photos={[]} />
 					photo
 				</div>
-			</div> */}
+			</div>
 		</div>
 	);
 };

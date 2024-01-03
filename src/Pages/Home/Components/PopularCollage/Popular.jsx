@@ -1,8 +1,9 @@
 import { FaBuilding, FaEvernote } from "react-icons/fa";
 import { Si4Chan, SiGooglecalendar, SiK3S, SiSearxng } from "react-icons/si";
+import { Link } from "react-router-dom";
 
 const Popular = ({ clgData }) => {
-	const { name, admission, events, Resarch, sports } = clgData;
+	const { _id, name, admission, events, Resarch, sports } = clgData;
 
 	return (
 		<div className="my-6">
@@ -49,10 +50,12 @@ const Popular = ({ clgData }) => {
 							))}
 						</p>
 						<div className="card-actions justify-end">
-							<button className="btn btn-primary">
-								<SiK3S />
-								DetailS
-							</button>
+							<Link to={`collage/${_id}`}>
+								<button className="btn btn-primary">
+									<SiK3S />
+									DetailS
+								</button>
+							</Link>
 						</div>
 					</div>
 				</div>
