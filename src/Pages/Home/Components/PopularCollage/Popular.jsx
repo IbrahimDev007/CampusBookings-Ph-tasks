@@ -3,17 +3,15 @@ import { Si4Chan, SiGooglecalendar, SiK3S, SiSearxng } from "react-icons/si";
 import { Link } from "react-router-dom";
 
 const Popular = ({ clgData }) => {
-	const { _id, name, admission, events, Resarch, sports, ratting } = clgData;
+	const { _id, img, name, admission, events, Resarch, sports, ratting } =
+		clgData;
 
 	return (
 		<div className="my-6">
 			{
 				<div className="card w-96 bg-base-100 shadow-xl">
 					<figure>
-						<img
-							src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-							alt="Shoes"
-						/>
+						<img src={img} alt="Shoes" />
 					</figure>
 					<div className="card-body">
 						<h2 className="card-title">
@@ -70,7 +68,7 @@ const Popular = ({ clgData }) => {
 						<div className="card-actions justify-end">
 							<Link to={`/collage/${_id}`}>
 								<button className="btn btn-primary">
-									<SiK3S />
+									<SiK3S /> Details
 								</button>
 							</Link>
 						</div>

@@ -1,11 +1,58 @@
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import { useState } from "react";
 import { FaStar } from "react-icons/fa";
+import useAuthHook from "../../Hooks/useAuthHook";
+import Swal from "sweetalert2";
+import { useForm } from "react-hook-form";
 // import { Rating } from "react-simple-star-rating";
 const MyCollages = () => {
 	const [rating, setRating] = useState(null);
 	const [hoverFill, setHoverFill] = useState(null);
 	const handleRatting = () => {
 		setRating(rating);
+	};
+	const { user } = useAuthHook();
+
+	const useUser = () => {
+		const {
+			data: usersData = [],
+			isLoading: loading,
+			refetch,
+		} = useQuery({
+			queryKey: ["userData"],
+			// enabled: !!!loading,
+			queryFn: async () => {
+				const res = await axios.get(
+					`http://localhost:3000/user/${user?.email}`
+				);
+				return res.data;
+			},
+		});
+		return [userData, loading, refetch];
+	};
+	const { img, name, detail } = userData;
+	const { register, handleSubmit } = useForm();
+	const handleReview = (data) => {
+		console.log(data);
+		axios
+			.post(
+				`https://localhost:3000/user/${user?.email}?ratting=${rating}?review=${data}`
+			)
+			.then(() => {
+				Swal.fire({
+					icon: "success",
+					title: "Success!",
+					text: "Your operation was successful.",
+				});
+			})
+			.catch((err) => {
+				Swal.fire({
+					icon: "error",
+					title: "Error!",
+					text: err || "Something went wrong.",
+				});
+			});
 	};
 
 	return (
@@ -50,11 +97,15 @@ const MyCollages = () => {
 								);
 							})}
 						</div>
-						<textarea
-							type="text"
-							placeholder="Review"
-							className="textarea-primary textarea-lg textarea "
-						></textarea>
+						<form onSubmit={handleSubmit(handleReview)}>
+							<textarea
+								{...register("review")}
+								type="text"
+								placeholder="Review"
+								className="textarea-primary textarea-lg textarea"
+							/>
+							<input type="submit" />
+						</form>
 					</div>
 				</div>
 			</div>

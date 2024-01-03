@@ -9,6 +9,7 @@ import MyCollages from "../Pages/MyCollege/MyCollages";
 import UniversityForm from "../Pages/Universityform/UniversityForm";
 import CollageDet from "../Pages/Collage Details/CollageDet";
 import axios from "axios";
+import AdmissionForm from "../Pages/Admission/AdmissionForm";
 //router added
 const router = createBrowserRouter([
 	{
@@ -32,9 +33,12 @@ const router = createBrowserRouter([
 					const res = await axios.get(
 						`http://localhost:3000/collage/${params.id}`
 					);
-					console.log(res.data, "ressssssssssssssssssssss");
 					return res.data;
 				},
+			},
+			{
+				path: "/admission/:id",
+				element: <AdmissionForm />,
 			},
 			{
 				path: "/admission",

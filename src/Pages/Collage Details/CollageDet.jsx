@@ -2,11 +2,35 @@ import { useLoaderData } from "react-router-dom";
 import DetailCard from "../../Components/Gallery/DetailCard";
 import GalleryCard from "../../Components/Gallery/GalleryCard";
 import useUserHook from "../../Hooks/useUserHooks";
+import { useForm } from "react-hook-form";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const CollageDet = () => {
 	const [user] = useUserHook();
 	const data = useLoaderData();
-	const { admission_process, events, Resarch, sports, reviews, Photos } = data;
+	const { admission_process, events, Resarch, sports, reviews, Photos, _id } =
+		data;
+	const { register, handleSubmit } = useForm();
+	const handleReview = (data) => {
+		console.log(data);
+		axios
+			.post(`https://localhost:3000/review/${_id}`, { data })
+			.then(() => {
+				Swal.fire({
+					icon: "success",
+					title: "Success!",
+					text: "Your operation was successful.",
+				});
+			})
+			.catch((err) => {
+				Swal.fire({
+					icon: "error",
+					title: "Error!",
+					text: err || "Something went wrong.",
+				});
+			});
+	};
 
 	return (
 		<div className="card w-full flex flex-col justify-center items-center">
@@ -67,11 +91,15 @@ const CollageDet = () => {
 
 						<h2 className="text-2xl font-semibold">Review</h2>
 						{user && (
-							<textarea
-								type="text"
-								placeholder="Review here"
-								className="textarea-accent textarea-lg"
-							></textarea>
+							<form onSubmit={handleSubmit(handleReview)}>
+								<textarea
+									{...register("review")}
+									type="text"
+									placeholder="Review"
+									className="textarea-primary textarea-lg textarea"
+								/>
+								<input type="submit" />
+							</form>
 						)}
 
 						<div className="chat chat-start">
