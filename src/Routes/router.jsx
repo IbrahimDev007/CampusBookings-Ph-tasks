@@ -39,6 +39,12 @@ const router = createBrowserRouter([
 			{
 				path: "/admission/:id",
 				element: <AdmissionForm />,
+				loader: async ({ params }) => {
+					const res = await axios.get(
+						`http://localhost:3000/collage/${params.id}`
+					);
+					return res.data;
+				},
 			},
 			{
 				path: "/admission",

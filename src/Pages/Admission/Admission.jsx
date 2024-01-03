@@ -17,7 +17,7 @@ const Admission = () => {
 							<h2 className="card-title">{clg?.name} </h2>
 							<p>{clg?.detail}</p>
 							<div className="card-actions justify-end">
-								<Link to={`/admission/${clg?.id}`}>
+								<Link to={`/admission/${clg?._id}`}>
 									<button className="btn btn-primary">Admission</button>
 								</Link>
 							</div>

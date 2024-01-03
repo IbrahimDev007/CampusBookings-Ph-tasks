@@ -15,7 +15,10 @@ const CollageDet = () => {
 	const handleReview = (data) => {
 		console.log(data);
 		axios
-			.post(`https://localhost:3000/review/${_id}`, { data })
+			.patch(`https://localhost:3000/review/${_id}`, {
+				photo: user?.photoUrl,
+				review: data.review,
+			})
 			.then(() => {
 				Swal.fire({
 					icon: "success",

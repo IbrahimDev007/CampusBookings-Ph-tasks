@@ -1,15 +1,23 @@
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import useUserHook from "../../Hooks/useUserHooks";
 
 const AdmissionForm = () => {
-	const id = useParams();
+	const { user, loading } = useUserHook();
+	const colagedata = useLoaderData();
 	const { register, handleSubmit } = useForm();
+
+	if (loading) {
+		return <h1>Loading</h1>;
+	}
+
 	const onSubmit = (data) => {
 		const candidateData = {
-			userId: id,
+			userId: user?._id,
 			data,
+			colagedata,
 		};
 		axios.post("http://localhost:3000/candidate", { candidateData }).then(() =>
 			Swal.fire({
