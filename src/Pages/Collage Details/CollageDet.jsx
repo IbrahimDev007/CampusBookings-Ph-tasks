@@ -4,46 +4,51 @@ import useAuthHook from "../../Hooks/useAuthHook";
 import useCollageHook from "../../Hooks/useCollageHook";
 
 const CollageDet = () => {
-	const { user } = useAuthHook();
+	// const { user } = useAuthHook();
 	const [collageData] = useCollageHook();
 	const { admission_process, events, Resarch, sports, reviews } = collageData;
+
+	console.log(events, "events", collageData);
 	return (
 		<div className="card  flex flex-col justify-center items-center">
-			<div className="grid grid-cols-6">
+			{/* <div className="grid grid-cols-6">
 				<div className="col-span-5 flex flex-col">
 					<>
-						<GalleryCard photos={collageData.Photos} />
+						<GalleryCard photos={collageData?.Photos} />
 
 						<h2 className="text-2xl font-semibold">Admission Process</h2>
 						<p>{admission_process}</p>
 
 						<h2 className="text-2xl font-semibold">Event</h2>
-						{events.map((event) => (
-							<DetailCard
-								key={event._id}
-								title={event.title}
-								desc={event.desc}
-							/>
-						))}
+						{events &&
+							events.map((event) => (
+								<DetailCard
+									key={event._id}
+									title={event.title}
+									desc={event.desc}
+								/>
+							))}
 
 						<h2 className="text-2xl font-semibold">Resarch History</h2>
-						{Resarch.map((research) => (
-							<DetailCard
-								key={research._id}
-								title={research.title}
-								desc={research.desc}
-								link={research?.link}
-							/>
-						))}
+						{Resarch &&
+							Resarch.map((research) => (
+								<DetailCard
+									key={research._id}
+									title={research.title}
+									desc={research.desc}
+									link={research?.link}
+								/>
+							))}
 
 						<h2 className="text-2xl font-semibold">Sports Activity</h2>
-						{sports.map((sport) => (
-							<DetailCard
-								key={sport._id}
-								title={sport.title}
-								desc={sport.desc}
-							/>
-						))}
+						{sports &&
+							sports.map((sport) => (
+								<DetailCard
+									key={sport._id}
+									title={sport.title}
+									desc={sport.desc}
+								/>
+							))}
 
 						<h2 className="text-2xl font-semibold">Review</h2>
 						{user && (
@@ -67,7 +72,7 @@ const CollageDet = () => {
 					<GalleryCard photos={[]} />
 					photo
 				</div>
-			</div>
+			</div> */}
 		</div>
 	);
 };
