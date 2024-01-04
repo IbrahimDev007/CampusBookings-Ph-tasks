@@ -1,12 +1,15 @@
 import { FaEvernote } from "react-icons/fa";
 
-const DetailCard = ({ title, desc, link }) => {
+const DetailCard = ({ title, desc, link, img }) => {
 	return (
 		<>
 			<div className="card w-96 bg-base-100 shadow-xl">
 				<figure>
 					<img
-						src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+						src={
+							(img && img) ||
+							"https://img.freepik.com/free-photo/glowing-stage-light-illuminates-cheering-rock-fans-generated-by-ai_188544-37983.jpg?size=626&ext=jpg"
+						}
 						alt="Shoes"
 					/>
 				</figure>

@@ -21,7 +21,7 @@ const AdmissionForm = () => {
 			colagedata,
 		};
 
-		axios.post("http://localhost:3000/candidate", candidateData).then(
+		axios.post("https://campus-two.vercel.app/candidate", candidateData).then(
 			() => reset(),
 			Swal.fire({
 				icon: "success",

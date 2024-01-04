@@ -16,7 +16,7 @@ const CollageDet = () => {
 	const handleReview = (data) => {
 		console.log(data);
 		axios
-			.patch(`http://localhost:3000/review/${_id}`, {
+			.patch(`https://campus-two.vercel.app/review/${_id}`, {
 				photo: user?.photoUrl,
 				reviews: data.review,
 			})

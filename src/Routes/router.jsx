@@ -35,7 +35,7 @@ const router = createBrowserRouter([
 				element: <CollageDet />,
 				loader: async ({ params }) => {
 					const res = await axios.get(
-						`http://localhost:3000/collage/${params.id}`
+						`https://campus-two.vercel.app/collage/${params.id}`
 					);
 					return res.data;
 				},
@@ -45,7 +45,7 @@ const router = createBrowserRouter([
 				element: <AdmissionForm />,
 				loader: async ({ params }) => {
 					const res = await axios.get(
-						`http://localhost:3000/collage/${params.id}`
+						`https://campus-two.vercel.app/collage/${params.id}`
 					);
 					return res.data;
 				},

@@ -35,7 +35,7 @@ const Login = () => {
 				// university: null,
 				// adress: null,
 			};
-			fetch("http://localhost:3000/users", {
+			fetch("https://campus-two.vercel.app/users", {
 				method: "POST",
 				headers: {
 					"content-type": "application/json",

@@ -11,7 +11,7 @@ const Hero = () => {
 
 	const handleSearch = (data) => {
 		axios
-			.get(`http://localhost:3000/hero`, { params: data })
+			.get(`https://campus-two.vercel.app/hero`, { params: data })
 			.then((res) => {
 				setShow(true);
 				setClagedata(res.data);

@@ -9,7 +9,7 @@ const useCollageHook = () => {
 	} = useQuery({
 		queryKey: ["collageData"],
 		queryFn: async () => {
-			const res = await axios.get("http://localhost:3000/collages");
+			const res = await axios.get("https://campus-two.vercel.app/collages");
 
 			return res.data;
 		},

@@ -9,7 +9,7 @@ const useUserHook = () => {
 		queryKey: ["users"],
 		// enabled: !!!loading,
 		queryFn: async () => {
-			const res = await axios.get("http://localhost:3000/users");
+			const res = await axios.get("https://campus-two.vercel.app/users");
 			return res.data;
 		},
 	});

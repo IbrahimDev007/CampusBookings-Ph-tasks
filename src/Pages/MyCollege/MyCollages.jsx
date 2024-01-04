@@ -13,7 +13,7 @@ const MyCollages = () => {
 		enabled: !!profile?._id,
 		queryFn: async () => {
 			const res = await axios.get(
-				`http://localhost:3000/candidate/${profile?._id}`
+				`https://campus-two.vercel.app/candidate/${profile?._id}`
 			);
 			console.log(res.data, "my --->collage");
 			return res.data;
@@ -35,7 +35,7 @@ const MyCollages = () => {
 		const rating = ratings[index];
 		axios
 			.post(
-				`http://localhost:3000/user/${id}?rating=${rating}&review=${data.review}`
+				`https://campus-two.vercel.app/user/${id}?rating=${rating}&review=${data.review}`
 			)
 			.then(() => {
 				Swal.fire({
@@ -66,7 +66,10 @@ const MyCollages = () => {
 				>
 					<figure>
 						<img
-							src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+							src={
+								user?.colagedata?.img ||
+								"https://img.freepik.com/free-photo/free-time-students-bachelor-s-campus-life-rhythm-five-friendly-students-are-walking_8353-6408.jpg?size=626&ext=jpg"
+							}
 							alt="Shoes"
 						/>
 					</figure>

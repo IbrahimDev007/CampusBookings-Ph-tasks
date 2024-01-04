@@ -19,13 +19,13 @@ const Home = () => {
 			{!loading && collageData && (
 				<div>
 					<div className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-						{collageData.map((clg) => (
+						{collageData.slice(0, 3).map((clg) => (
 							<Popular key={clg?._id} clgData={clg} />
 						))}
 					</div>
 					<div className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3"></div>
 
-					{collageData.map((clg) => (
+					{collageData.slice(0, 3).map((clg) => (
 						<PopularGraduted
 							key={clg?._id}
 							clgData={clg?.Photos}
@@ -33,13 +33,13 @@ const Home = () => {
 						/>
 					))}
 
-					<div className=" grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
-						{collageData.map((clg) => (
+					<div className=" grid grid-cols-2 md:grid-cols-3 xl:grid-cols-3 justify-center items-center">
+						{collageData.slice(0, 3).map((clg) => (
 							<ResarchLink key={clg?._id} clgData={clg} />
 						))}
 					</div>
 					<div className=" grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
-						{collageData.map((clg) => (
+						{collageData.slice(0, 5).map((clg) => (
 							<Review key={clg?._id} clgData={clg} />
 						))}
 					</div>

@@ -13,7 +13,7 @@ const useUserProfileHook = () => {
 		enabled: !!user?.email,
 		queryFn: async () => {
 			const res = await axios.get(
-				`http://localhost:3000/users/about/${user?.email}`
+				`https://campus-two.vercel.app/users/about/${user?.email}`
 			);
 
 			return res.data;

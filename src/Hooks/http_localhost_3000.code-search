@@ -1,0 +1,58 @@
+# Query: http://localhost:3000
+# Flags: RegExp
+# ContextLines: 1
+
+10 results - 9 files
+
+src\Hooks\useCollageHook.jsx:
+  11  		queryFn: async () => {
+  12: 			const res = await axios.get("https://campus-two.vercel.app//collages");
+  13  
+
+src\Hooks\useUserHooks.jsx:
+  11  		queryFn: async () => {
+  12: 			const res = await axios.get("https://campus-two.vercel.app//users");
+  13  			return res.data;
+
+src\Hooks\useUserVerify.jsx:
+  15  			const res = await axios.get(
+  16: 				`https://campus-two.vercel.app//users/about/${user?.email}`
+  17  			);
+
+src\Pages\Admission\AdmissionForm.jsx:
+  23  
+  24: 		axios.post("https://campus-two.vercel.app//candidate", candidateData).then(
+  25  			() => reset(),
+
+src\Pages\Collage Details\CollageDet.jsx:
+  18  		axios
+  19: 			.patch(`https://campus-two.vercel.app//review/${_id}`, {
+  20  				photo: user?.photoUrl,
+
+src\Pages\Home\Components\Hero.jsx:
+  12  		axios
+  13  		axios
+  14: 			.get(`https://campus-two.vercel.app//hero`, { params: data })
+  14  			.then((res) => {
+  15  			.then((res) => {
+
+src\Pages\Login\Login.jsx:
+  37  			};
+  38: 			fetch("https://campus-two.vercel.app//users", {
+  39  				method: "POST",
+
+src\Pages\MyCollege\MyCollages.jsx:
+  36  			.post(
+  37  			.post(
+  38: 				`https://campus-two.vercel.app//user/${id}?rating=${rating}&review=${data.review}`
+  38  			)
+  39  			)
+
+src\Routes\router.jsx:
+  37  					const res = await axios.get(
+  38: 						`https://campus-two.vercel.app//collage/${params.id}`
+  39  					);
+
+  47  					const res = await axios.get(
+  48: 						`https://campus-two.vercel.app//collage/${params.id}`
+  49  					);
