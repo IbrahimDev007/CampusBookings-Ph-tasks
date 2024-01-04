@@ -1,11 +1,18 @@
 import { useForm } from "react-hook-form";
 import useUserProfileHook from "../../Hooks/useUserVerify";
+import axios from "axios";
 
 const About = () => {
 	const [profile, proloading] = useUserProfileHook();
-	const { register, handleSubmit } = useForm();
+	const { register, handleSubmit, reset } = useForm();
 	const onSubmit = (data) => {
 		console.log(data);
+		axios
+			.patch(`https://localhost:3000/users/${profile?._id}`, { data })
+			.then(() => {
+				reset();
+			})
+			.catch((err) => console.log(err));
 	};
 	if (proloading) {
 		return <div>Loading</div>;

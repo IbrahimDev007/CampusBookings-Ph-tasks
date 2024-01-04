@@ -8,7 +8,7 @@ const Popular = ({ clgData }) => {
 	// console.log(Resarch, "Resarch");
 
 	return (
-		<div className="my-6">
+		<div className="mb-1 mt-4">
 			{
 				<div className="card w-96 bg-base-100 shadow-xl">
 					<figure>

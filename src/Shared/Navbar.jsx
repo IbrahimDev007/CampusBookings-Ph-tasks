@@ -7,7 +7,6 @@ import {
 	SiGnuprivacyguard,
 	SiHomeassistant,
 	SiMediamarkt,
-	SiMedium,
 	SiMyspace,
 } from "react-icons/si";
 import { FaBookOpen, FaCampground } from "react-icons/fa";
