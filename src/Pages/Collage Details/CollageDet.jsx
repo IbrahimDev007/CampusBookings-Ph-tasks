@@ -5,9 +5,10 @@ import useUserHook from "../../Hooks/useUserHooks";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import Swal from "sweetalert2";
+import useAuthHook from "../../Hooks/useAuthHook";
 
 const CollageDet = () => {
-	const [user] = useUserHook();
+	const { user } = useAuthHook();
 	const data = useLoaderData();
 	const { admission_process, events, Resarch, sports, reviews, Photos, _id } =
 		data;
@@ -15,9 +16,9 @@ const CollageDet = () => {
 	const handleReview = (data) => {
 		console.log(data);
 		axios
-			.patch(`https://localhost:3000/review/${_id}`, {
+			.patch(`http://localhost:3000/review/${_id}`, {
 				photo: user?.photoUrl,
-				review: data.review,
+				reviews: data.review,
 			})
 			.then(() => {
 				Swal.fire({
@@ -100,15 +101,16 @@ const CollageDet = () => {
 									type="text"
 									placeholder="Review"
 									className="textarea-primary textarea-lg textarea"
+									required
 								/>
-								<input type="submit" />
+								<input type="submit" className="btn btn-primary mx-auto" />
 							</form>
 						)}
 
 						<div className="chat chat-start">
 							{reviews.map((review, idx) => (
 								<div className="chat-bubble" key={idx}>
-									{review?.msg}
+									{reviews?.msg}
 								</div>
 							))}
 						</div>

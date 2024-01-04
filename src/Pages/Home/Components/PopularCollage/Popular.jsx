@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const Popular = ({ clgData }) => {
 	const { _id, img, name, admission, events, Resarch, sports, ratting } =
 		clgData;
+	// console.log(Resarch, "Resarch");
 
 	return (
 		<div className="my-6">
@@ -15,37 +16,34 @@ const Popular = ({ clgData }) => {
 					</figure>
 					<div className="card-body">
 						<h2 className="card-title">
-							<FaBuilding /> {name}
+							<FaBuilding /> {name && name}
 						</h2>
 						<p className="flex">
 							<SiGooglecalendar />
 							<span className="font-bold text-md mx-2">Admission:</span>
-							{admission}
+							{admission && admission}
 						</p>
 						<p className="flex">
 							<FaEvernote />
 							<span className="font-bold text-md mx-2">Event:</span>{" "}
 							<span className="flex mx-2">
-								{events.map((ev) => (
-									<span key={ev?._id}>{ev?.title}</span>
-								))}
+								{events &&
+									events.map((ev) => <span key={ev?._id}>{ev?.title}</span>)}
 							</span>
 						</p>
 						<p className="flex">
 							<SiSearxng />
 							<span className="font-bold text-md mx-2"> Resarch:</span>
 							<span className="flex mx-2">
-								{Resarch.map((Rs) => (
-									<span key={Rs?._id}>{Rs?.title}</span>
-								))}
+								{Resarch &&
+									Resarch.map((Rs) => <span key={Rs?._id}>{Rs?.title}</span>)}
 							</span>
 						</p>
 						<p className="flex">
 							<Si4Chan />
 							<span className="font-bold text-md mx-2">Sports:</span>
-							{sports.map((Rs) => (
-								<span key={Rs?._id}>{Rs?.title}</span>
-							))}
+							{sports &&
+								sports.map((Rs) => <span key={Rs?._id}>{Rs?.title}</span>)}
 						</p>
 						<p>
 							<div className="flex">

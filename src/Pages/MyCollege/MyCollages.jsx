@@ -2,42 +2,40 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
 import { FaStar } from "react-icons/fa";
-import useAuthHook from "../../Hooks/useAuthHook";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
-// import { Rating } from "react-simple-star-rating";
-const MyCollages = () => {
-	const [rating, setRating] = useState(null);
-	const [hoverFill, setHoverFill] = useState(null);
-	const handleRatting = () => {
-		setRating(rating);
-	};
-	const { user } = useAuthHook();
+import useUserProfileHook from "../../Hooks/useUserVerify";
 
-	const useUser = () => {
-		const {
-			data: usersData = [],
-			isLoading: loading,
-			refetch,
-		} = useQuery({
-			queryKey: ["userData"],
-			// enabled: !!!loading,
-			queryFn: async () => {
-				const res = await axios.get(
-					`http://localhost:3000/user/${user?.email}`
-				);
-				return res.data;
-			},
-		});
-		return [userData, loading, refetch];
-	};
-	const { img, name, detail } = userData;
+const MyCollages = () => {
+	const [profile] = useUserProfileHook();
+	const { data: userData = [], isLoading } = useQuery({
+		queryKey: ["userData"],
+		enabled: !!profile?._id,
+		queryFn: async () => {
+			const res = await axios.get(
+				`http://localhost:3000/candidate/${profile?._id}`
+			);
+			console.log(res.data, "my --->collage");
+			return res.data;
+		},
+	});
+
 	const { register, handleSubmit } = useForm();
-	const handleReview = (data) => {
-		console.log(data);
+	const [ratings, setRatings] = useState([]);
+
+	const handleRatingClick = (index, ratingValue) => {
+		setRatings((prevRatings) => {
+			const newRatings = [...prevRatings];
+			newRatings[index] = ratingValue;
+			return newRatings;
+		});
+	};
+
+	const handleReviewSubmit = (data, index) => {
+		const rating = ratings[index];
 		axios
 			.post(
-				`https://localhost:3000/user/${user?.email}?ratting=${rating}?review=${data}`
+				`http://localhost:3000/user/${profile?.email}?rating=${rating}&review=${data.review}`
 			)
 			.then(() => {
 				Swal.fire({
@@ -55,61 +53,62 @@ const MyCollages = () => {
 			});
 	};
 
-	return (
-		<>
-			<div className="card w-96 bg-base-100 shadow-xl">
-				<figure>
-					<img
-						src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-						alt="Shoes"
-					/>
-				</figure>
-				<div className="card-body">
-					<h2 className="card-title">Collage Name</h2>
-					<p>collage Details</p>
-					<div
-						className="card-actions flex flex-col
-					"
-					>
-						<div className="flex">
-							{[...Array(5)].map((_, index) => {
-								const ratingValue = index + 1;
+	if (isLoading) {
+		return <h1>Loading</h1>;
+	}
 
-								return (
+	return (
+		<div className="grid grid-cols-2">
+			{userData.map((user, index) => (
+				<div
+					key={user?.colagedata?._id}
+					className="card w-96 bg-base-100 shadow-xl"
+				>
+					<figure>
+						<img
+							src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+							alt="Shoes"
+						/>
+					</figure>
+					<div className="card-body">
+						<h2 className="card-title">
+							Collage Name: {user?.colagedata?.name}
+						</h2>
+						<p>Collage Details: {user?.colagedata?.detail}</p>
+						<div className="card-actions flex flex-col">
+							<div className="flex">
+								{[...Array(5)].map((_, starIndex) => (
 									<button
-										key={index}
-										onMouseEnter={() => setHoverFill(ratingValue)}
-										onMouseLeave={() => setHoverFill(null)}
-										onClick={handleRatting}
+										key={starIndex}
+										onClick={() => handleRatingClick(index, starIndex + 1)}
 									>
 										<FaStar
 											size={20}
 											style={{
-												color:
-													ratingValue <= (hoverFill || rating)
-														? "#ffe101"
-														: "#ccc",
+												color: starIndex < ratings[index] ? "#ffe101" : "#ccc",
 											}}
-											onChange={() => setRating(ratingValue)}
-											value={ratingValue}
 										/>
 									</button>
-								);
-							})}
+								))}
+							</div>
+							<form
+								onSubmit={handleSubmit((data) =>
+									handleReviewSubmit(data, index)
+								)}
+							>
+								<textarea
+									{...register("review")}
+									type="text"
+									placeholder="Review"
+									className="textarea-primary textarea-lg textarea"
+								/>
+								<input className="btn btn-primary" type="submit" />
+							</form>
 						</div>
-						<form onSubmit={handleSubmit(handleReview)}>
-							<textarea
-								{...register("review")}
-								type="text"
-								placeholder="Review"
-								className="textarea-primary textarea-lg textarea"
-							/>
-							<input type="submit" />
-						</form>
 					</div>
 				</div>
-			</div>
-		</>
+			))}
+		</div>
 	);
 };
 
