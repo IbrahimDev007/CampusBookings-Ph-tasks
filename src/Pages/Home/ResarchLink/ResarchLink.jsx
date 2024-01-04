@@ -1,10 +1,11 @@
 const ResarchLink = ({ clgData }) => {
-	const { Resarch } = clgData;
-	
+	const { Research } = clgData;
+	console.log(Research);
+
 	return (
-		<div className=" grid grid-rows-2 ">
-			{Resarch &&
-				Resarch.map((res) => (
+		<div>
+			{Research &&
+				Research.map((res) => (
 					<div key={res?._id} className="card">
 						{/* <div className=" text-center">
 							<img
@@ -15,7 +16,7 @@ const ResarchLink = ({ clgData }) => {
 						</div> */}
 						<div className="card-body">
 							<h1 className="card-title">Resarch Title:{res?.title}</h1>
-							<p className="font-light hover:bg-amber-300  py-6 px-4 text-md ">
+							<p className="font-light hover:bg-amber-300  py-6 px-2 text-md ">
 								Link {res?.link}
 							</p>
 						</div>

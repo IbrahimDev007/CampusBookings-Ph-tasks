@@ -58,7 +58,7 @@ const Navbar = () => {
 
 						<li>
 							{!user && (
-								<NavLink to="/register" className={isActive}>
+								<NavLink to="/register" className={`${isActive} bg-current`}>
 									<SiGnuprivacyguard />
 									Register
 								</NavLink>
@@ -111,12 +111,7 @@ const Navbar = () => {
 							My Collage
 						</NavLink>
 					</li>
-					<li>
-						<NavLink to="/university" className={isActive}>
-							<SiMedium />
-							University
-						</NavLink>
-					</li>
+
 					<li>
 						{!user && (
 							<NavLink to="/register" className={isActive}>

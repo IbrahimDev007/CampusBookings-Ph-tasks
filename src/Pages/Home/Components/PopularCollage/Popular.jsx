@@ -3,7 +3,7 @@ import { Si4Chan, SiGooglecalendar, SiK3S, SiSearxng } from "react-icons/si";
 import { Link } from "react-router-dom";
 
 const Popular = ({ clgData }) => {
-	const { _id, img, name, admission, events, Resarch, sports, ratting } =
+	const { _id, img, name, admission, events, Resarch, sports, rating } =
 		clgData;
 	// console.log(Resarch, "Resarch");
 
@@ -53,9 +53,9 @@ const Popular = ({ clgData }) => {
 											<FaStar
 												size={20}
 												style={{
-													color: "#ffe101",
+													color:
+														index < Math.round(rating) ? "#ffe101" : "#ccc",
 												}}
-												value={ratting}
 											/>
 										</button>
 									);

@@ -6,10 +6,10 @@ import Register from "../Pages/Register/Register";
 import Collages from "../Pages/Collages/Collages";
 import Admission from "../Pages/Admission/Admission";
 import MyCollages from "../Pages/MyCollege/MyCollages";
-import UniversityForm from "../Pages/Universityform/UniversityForm";
 import CollageDet from "../Pages/Collage Details/CollageDet";
 import axios from "axios";
 import AdmissionForm from "../Pages/Admission/AdmissionForm";
+import About from "../Pages/About/About";
 //router added
 const router = createBrowserRouter([
 	{
@@ -21,6 +21,10 @@ const router = createBrowserRouter([
 			{
 				path: "/",
 				element: <Home />,
+			},
+			{
+				path: "/about",
+				element: <About />,
 			},
 			{
 				path: "/collages",
@@ -53,10 +57,6 @@ const router = createBrowserRouter([
 			{
 				path: "/myCollages",
 				element: <MyCollages />,
-			},
-			{
-				path: "/university",
-				element: <UniversityForm />,
 			},
 
 			{

@@ -31,11 +31,11 @@ const MyCollages = () => {
 		});
 	};
 
-	const handleReviewSubmit = (data, index) => {
+	const handleReviewSubmit = (data, index, id) => {
 		const rating = ratings[index];
 		axios
 			.post(
-				`http://localhost:3000/user/${profile?.email}?rating=${rating}&review=${data.review}`
+				`http://localhost:3000/user/${id}?rating=${rating}&review=${data.review}`
 			)
 			.then(() => {
 				Swal.fire({
@@ -93,7 +93,7 @@ const MyCollages = () => {
 							</div>
 							<form
 								onSubmit={handleSubmit((data) =>
-									handleReviewSubmit(data, index)
+									handleReviewSubmit(data, index, user?.colagedata?._id)
 								)}
 							>
 								<textarea

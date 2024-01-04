@@ -26,7 +26,11 @@ const Home = () => {
 					<div className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3"></div>
 
 					{collageData.map((clg) => (
-						<PopularGraduted key={clg?._id} clgData={clg?.Photos} />
+						<PopularGraduted
+							key={clg?._id}
+							clgData={clg?.Photos}
+							name={clg?.name}
+						/>
 					))}
 
 					<div className=" grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
